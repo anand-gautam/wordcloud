@@ -1,0 +1,12 @@
+/// <reference types="Cypress-xpath" />
+/// <reference types = "Cypress-iframe"/>
+import 'cypress-iframe'
+
+describe('GoogleTest', () => {
+    it("Hits google", () =>{
+        cy.visit("https://www.google.com")
+        cy.get("a[aria-label='Google apps']").click()
+        cy.frameLoaded("iframe[role='presentation']")
+        cy.iframe().xpath("//span[text()='Maps']").click()
+    })
+})
